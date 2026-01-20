@@ -1,1 +1,158 @@
-# xpycode_feedbacks
+# XPyCode
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT + Commons Clause](https://img.shields.io/badge/License-MIT%20%2B%20Commons%20Clause-yellow.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
+
+**XPyCode** is an Excel-Python integration platform that enables you to write, execute, and manage Python code directly within Microsoft Excel workbooks. It provides a seamless bridge between Excel and Python, featuring a full-featured IDE, custom function publishing, package management, and real-time debugging.
+
+## PROJECT STATUS
+
+⚠️ This version is at early stage. It is an Alpha version, almost Beta. 
+
+🚨 Don't use for production or in sensitive environement 🚨
+
+## Features
+
+- 🐍 **Python Execution in Excel** - Run Python code with full access to Excel objects
+- 📝 **Integrated IDE** - Monaco-based code editor with IntelliSense, syntax highlighting, and debugging
+- 📦 **Package Manager** - Install and manage Python packages per workbook with dependency resolution
+- 🔧 **Custom Functions (UDFs)** - Publish Python functions as Excel formulas
+- 🎯 **Event Handling** - React to Excel events (worksheet changes, selections, etc.) with Python
+- 🔍 **Object Management** - Save and re-use objects in python kernel
+- 🐛 **Debugger** - Set breakpoints, step through code, and inspect variables
+- 🎨 **Theming** - Customizable dark/light themes for the IDE
+
+## Requirements
+
+- **Operating System**: Windows 10/11 (64-bit) / Other platforms are enabled but not tested 
+- **Python**: 3.10 or higher
+- **Microsoft Excel**: 2016 or later (with Office.js Add-in support)
+
+## Installation
+
+```bash
+pip install xpycode_master
+```
+
+### Quick Start
+
+1. Install XPyCode:
+   ```bash
+   pip install xpycode_master
+   ```
+
+2. Start the XPyCode Master server:
+   ```bash
+   python -m xpycode_master
+   ```
+
+3. The Excel Add-in will be automatically registered.
+
+   Open Excel and look for the XPyCode in **Add-Ins -> More Add-Ins -> Shared Folder**
+
+
+4. Launch in Excel:
+   ```
+   ┌─────────────────┐     ┌─────────────────┐
+   │  Open Console  │ ───►│    <> Editor    │
+   └─────────────────┘     └─────────────────┘
+   ```
+
+## Dependencies
+
+### Core Dependencies
+- **fastapi** >= 0.100.0 - Web framework for the Business Layer API
+- **uvicorn** >= 0.22.0 - ASGI server for FastAPI
+- **websockets** >= 12.0 - WebSocket client/server implementation
+- **aiohttp** >= 3.8.0 - Async HTTP client for package index queries
+- **packaging** >= 21.0 - Version parsing and specifier handling
+- **PySide6** >= 6.5.0 - Qt bindings for the IDE GUI (includes WebEngine for Monaco Editor embedding)
+- **jedi** >= 0.19.0 - Python autocompletion and static analysis
+- **orjson** >= 3.9.0 - Fast JSON serialization (recommended)
+- **keyring** >= 24.0.0 - Secure credential storage for AI providers
+- **unearth** >= 0.14.0 - Enhanced package discovery
+
+## Architecture
+
+XPyCode consists of several interconnected components:
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   Excel Add-in  │◄───►│  Business Layer │◄───►│   Python IDE    │
+│   (Office.js)   │     │    (FastAPI)    │     │   (PySide6)     │
+└─────────────────┘     └────────┬────────┘     └─────────────────┘
+                                 │
+                                 ▼
+                        ┌─────────────────┐
+                        │  Python Kernel  │
+                        │  (per workbook) │
+                        └─────────────────┘
+```
+
+- **Excel Add-in**: Office.js-based add-in providing the Excel interface
+- **Business Layer**: FastAPI server acting as message broker between components
+- **Python Kernel**: Per-workbook Python execution environment
+- **Python IDE**: PySide6-based development environment with Monaco Editor
+
+## Usage
+
+### Running Python Code
+
+1. Open a workbook in Excel
+2. Click "Open Console" in the XPyCode ribbon
+3. Open Editor with "<>" button
+4. Right click on the workbook name and add a python module
+5. Write Python code in the editor
+6. Press F5 or click "Run" to execute
+
+### Publishing Custom Functions
+
+```python
+# In your module, define a function
+def add_numbers(a: float, b: float) -> float:
+    """Add two numbers together."""
+    return a + b
+```
+
+Then use the Function Publisher in the IDE to expose it as an Excel formula: `=ADD_NUMBERS(A1, B1)`
+
+### Package Management
+
+1. Open the Package Manager panel in the IDE
+2. Search for a package (e.g., "pandas")
+3. Select version and optional extras
+4. Click "Install/Update" to install for the current workbook
+
+## Configuration
+
+Configure themes, pypi urls, console preferences, ... in File/Settings menu
+
+
+## License
+
+This project is licensed under the **MIT License with Commons Clause**.
+
+You are free to use, modify, and distribute this software for any purpose. However, you may not sell the software or include it as a substantial part of a commercial product or service.
+
+See the [LICENSE](LICENSE) file for full details.
+
+## Author
+
+**BGE Advisory**
+
+## Feedbacks
+
+Contributions are welcome! Please feel free to submit issues.
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/gb-bge-advisory/xpycode_master_repo/issues)
+- **Documentation**: TBD
+
+## Acknowledgments
+
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - Code editor component
+- [Office.js](https://docs.microsoft.com/en-us/office/dev/add-ins/) - Excel Add-in API
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern Python web framework
+- [PySide6](https://doc.qt.io/qtforpython/) - Qt bindings for Python
