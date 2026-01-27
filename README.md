@@ -3,14 +3,21 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT + Commons Clause](https://img.shields.io/badge/License-MIT%20%2B%20Commons%20Clause-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
+[![Platform: Linux/macOS (experimental)](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20(experimental)-orange.svg)]()
 
 **XPyCode** is an Excel-Python integration platform that enables you to write, execute, and manage Python code directly within Microsoft Excel workbooks. It provides a seamless bridge between Excel and Python, featuring a full-featured IDE, custom function publishing, package management, and real-time debugging.
 
-## PROJECT STATUS
+## Project status
 
 ⚠️ This version is at early stage. It is an Alpha version, almost Beta. 
 
 🚨 Don't use for production or in sensitive environement 🚨
+
+## Help Keep the Project Alive
+
+⭐ Add a star in [GitHub](https://xpycode.com/stars) to promote the project 
+
+💵 [Donate](https://xpycode.com/donate) (for instance 3€ per month)
 
 ## Features
 
@@ -53,11 +60,59 @@ pip install xpycode_master
 
 
 4. Launch in Excel:
+   
    ```
-   ┌─────────────────┐     ┌─────────────────┐
-   │  Open Console  │ ───►│    <> Editor    │
-   └─────────────────┘     └─────────────────┘
+   [Open Console] --> [<> Editor ]
    ```
+
+5. In **XPyCode Editor**
+   - Add a python module: Right click on the workbook -> **New Module**
+   - Start coding, using xpycode module:
+   ```python
+   def updateExcelFromPython():
+      import xpycode
+      ws=xpycode.worksheets.getActiveWorksheet()
+      rA1=ws.getRange("A1")
+      rA1.values="Hello"
+      rA1.format.fill.color="yellow"
+   ```
+
+## Usage
+
+### Running Python Code
+
+1. Open a workbook in Excel
+2. Click "Open Console" in the XPyCode ribbon
+3. Open Editor with "<>" button
+4. Right click on the workbook name and add a python module
+5. Write Python code in the editor
+6. Press F5 or click "Run" to execute
+
+### Publishing Custom Functions
+
+```python
+# In your module, define a function
+def add_numbers(a: float, b: float) -> float:
+    """Add two numbers together."""
+    return a + b
+```
+
+Then use the Function Publisher in the IDE to expose it as an Excel formula: `=ADD_NUMBERS(A1, B1)`
+
+### Package Management
+
+1. Open the Package Manager panel in the IDE
+2. Search for a package (e.g., "pandas")
+3. Select version and optional extras
+4. Click "Install/Update" to install for the current workbook
+
+## Configuration
+
+Configure themes, pypi urls, console preferences, ... in File/Settings menu
+
+## Excel Sample
+
+You will find an Excel workbook sample in xpycode_master\excel_sample.
 
 ## Dependencies
 
@@ -95,47 +150,13 @@ XPyCode consists of several interconnected components:
 - **Python Kernel**: Per-workbook Python execution environment
 - **Python IDE**: PySide6-based development environment with Monaco Editor
 
-## Usage
-
-### Running Python Code
-
-1. Open a workbook in Excel
-2. Click "Open Console" in the XPyCode ribbon
-3. Open Editor with "<>" button
-4. Right click on the workbook name and add a python module
-5. Write Python code in the editor
-6. Press F5 or click "Run" to execute
-
-### Publishing Custom Functions
-
-```python
-# In your module, define a function
-def add_numbers(a: float, b: float) -> float:
-    """Add two numbers together."""
-    return a + b
-```
-
-Then use the Function Publisher in the IDE to expose it as an Excel formula: `=ADD_NUMBERS(A1, B1)`
-
-### Package Management
-
-1. Open the Package Manager panel in the IDE
-2. Search for a package (e.g., "pandas")
-3. Select version and optional extras
-4. Click "Install/Update" to install for the current workbook
-
-## Configuration
-
-Configure themes, pypi urls, console preferences, ... in File/Settings menu
-
-
 ## License
 
 This project is licensed under the **MIT License with Commons Clause**.
 
 You are free to use, modify, and distribute this software for any purpose. However, you may not sell the software or include it as a substantial part of a commercial product or service.
 
-See the [LICENSE](LICENSE) file for full details.
+See the [LICENSE](https://xpycode.com/LICENSE) file for full details.
 
 ## Author
 
@@ -147,8 +168,8 @@ Contributions are welcome! Please feel free to submit issues.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/gb-bge-advisory/xpycode_master_repo/issues)
-- **Documentation**: TBD
+- **Issues**: [GitHub Issues](https://xpycode.com/issues)
+- **Documentation**: [Docs](https://docs.xpycode.com/)
 
 ## Acknowledgments
 
