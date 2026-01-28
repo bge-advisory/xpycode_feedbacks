@@ -19,6 +19,10 @@
 
 💵 [Donate](https://xpycode.com/donate) (for instance 3€ per month)
 
+💬 Join the XPyCode Slack community to ask questions, share feedback, and connect with other users:
+   👉 [Invite link](https://xpycode.com/slack_invite)
+   👉 [Workspace](https://xpycode.com/slack)
+
 ## Features
 
 - 🐍 **Python Execution in Excel** - Run Python code with full access to Excel objects
