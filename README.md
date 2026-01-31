@@ -81,6 +81,29 @@ pip install xpycode_master
       rA1.format.fill.color="yellow"
    ```
 
+## Addin Hosting Modes
+
+XPyCode supports two modes for running the Excel add-in:
+
+### Local Mode (Default)
+
+The add-in is served from a local HTTPS server on your machine. This is the default mode and requires no internet connection.
+
+```bash
+python -m xpycode_master
+```
+
+### External Mode
+
+The add-in is served from `https://addin.xpycode.com`. This mode is useful for easier setup as it doesn't require local certificate management.
+
+```bash
+python -m xpycode_master --use-external-addin
+```
+
+!!! warning "Mode Switch Cache Clearing"
+    When switching between local and external modes, XPyCode will automatically clear the Office add-in cache. This affects all Office add-ins, not just XPyCode. You may need to restart Excel after switching modes.
+
 ## Usage
 
 ### Running Python Code
