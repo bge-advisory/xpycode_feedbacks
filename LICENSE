@@ -77,6 +77,10 @@ mkdocs                  BSD-2-Clause                    github.com/mkdocs/mkdocs
 mkdocs-material         MIT                             github.com/squidfunk/mkdocs-material
 mkdocs-glightbox        MIT                             github.com/blueswen/mkdocs-glightbox
 pymdown-extensions      MIT                             github.com/facelessuser/pymdown-extensions
+orjson                  Apache-2.0 OR MIT               github.com/ijl/orjson
+unearth                 MIT                             github.com/frostming/unearth
+pywin32                 PSF-2.0 (BSD-style)             github.com/mhammond/pywin32
+polars                  MIT                             github.com/pola-rs/polars
 
 --------------------------------------------------------------------------------
                          JAVASCRIPT/WEB DEPENDENCIES
@@ -218,6 +222,44 @@ https://github.com/facelessuser/pymdown-extensions
 
 Note: Markdown extensions for enhanced documentation formatting.
 
+orjson
+------
+License: Apache License 2.0 OR MIT License (dual-licensed)
+Copyright (c) 2018 ijl
+https://github.com/ijl/orjson
+
+Note: orjson provides fast JSON serialization, used as an optional
+performance enhancement in the Python kernel and business layer.
+
+unearth
+-------
+License: MIT License
+Copyright (c) 2022 Frost Ming
+https://github.com/frostming/unearth
+
+Note: unearth provides enhanced package discovery from PyPI and custom
+package indexes, used as a fallback in the package index client.
+
+pywin32
+-------
+License: PSF-2.0 (BSD-style permissive license)
+Copyright (c) 1994-2024 Mark Hammond and contributors
+https://github.com/mhammond/pywin32
+
+Note: pywin32 provides Python extensions for Windows APIs, used for Windows
+service management and COM integration. Only installed on Windows
+(sys_platform == 'win32').
+
+polars
+------
+License: MIT License
+Copyright (c) 2020 Ritchie Vink
+https://github.com/pola-rs/polars
+
+Note: polars is an optional dependency providing high-performance DataFrame
+operations. Users can install it with `pip install polars` for polars
+DataFrame/Series support in XPyCode's Excel integration.
+
 Monaco Editor
 -------------
 License: MIT License
@@ -297,6 +339,7 @@ Key transitive dependencies include but are not limited to:
 - Markdown (BSD-3-Clause) - Used by mkdocs
 - PyYAML (MIT) - Used by mkdocs for configuration
 - Pygments (BSD-2-Clause) - Used by pymdown-extensions for syntax highlighting
+- orjson (Apache-2.0/MIT) - Fast JSON serialization
 
 ================================================================================
                                CONTACT
