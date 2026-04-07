@@ -1,15 +1,16 @@
 # XPyCode
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT + Commons Clause](https://img.shields.io/badge/License-MIT%20%2B%20Commons%20Clause-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
-[![Platform: Linux/macOS (experimental)](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20(experimental)-orange.svg)]()
+[![Platform: macOS](https://img.shields.io/badge/platform-macOS-lightgrey.svg)]()
+[![Platform: Linux (experimental)](https://img.shields.io/badge/platform-Linux%20(experimental)-orange.svg)]()
 
 **XPyCode** is an Excel-Python integration platform that enables you to write, execute, and manage Python code directly within Microsoft Excel workbooks. It provides a seamless bridge between Excel and Python, featuring a full-featured IDE, custom function publishing, package management, and real-time debugging.
 
 ## Project status
 
-⚠️ This version is at early stage. It is an Alpha version, almost Beta. 
+⚠️ This version is at early stage. It is a Beta version.
 
 🚨 Don't use for production or in sensitive environement 🚨
 
@@ -37,7 +38,7 @@
 ## Requirements
 
 - **Operating System**: Windows 10/11 (64-bit) / Other platforms are enabled but not tested 
-- **Python**: 3.10 or higher
+- **Python**: 3.9 or higher
 - **Microsoft Excel**: 2016 or later (with Office.js Add-in support)
 
 ## Installation
@@ -80,6 +81,40 @@ pip install xpycode_master
       rA1.values="Hello"
       rA1.format.fill.color="yellow"
    ```
+
+## Running as a Service
+
+XPyCode can run as a system service for automatic startup:
+
+```bash
+# Install and start as a service
+python -m xpycode_master service install
+
+# Check status
+python -m xpycode_master service status
+
+# Stop service
+python -m xpycode_master service stop
+```
+
+Supported on Windows, Linux (systemd), and macOS (launchd). See [Service Management](https://docs.xpycode.com/user-guide/service-management/) for details.
+
+## Upgrading
+
+Check for and install updates:
+
+```bash
+# Check if an update is available
+python -m xpycode_master --upgrade --check
+
+# Upgrade interactively
+python -m xpycode_master --upgrade
+
+# Upgrade without confirmation
+python -m xpycode_master --upgrade --yes
+```
+
+If XPyCode is running as a service, the upgrade process will automatically stop and restart the service.
 
 ## Addin Hosting Modes
 
@@ -151,7 +186,7 @@ You will find an Excel workbook sample in xpycode_master\excel_sample.
 - **packaging** >= 21.0 - Version parsing and specifier handling
 - **PySide6** >= 6.5.0 - Qt bindings for the IDE GUI (includes WebEngine for Monaco Editor embedding)
 - **jedi** >= 0.19.0 - Python autocompletion and static analysis
-- **orjson** >= 3.9.0 - Fast JSON serialization (recommended)
+- **orjson** >= 3.9.15 - Fast JSON serialization (recommended)
 - **keyring** >= 24.0.0 - Secure credential storage for AI providers
 - **unearth** >= 0.14.0 - Enhanced package discovery
 
