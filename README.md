@@ -54,10 +54,16 @@ pip install xpycode_master
    pip install xpycode_master
    ```
 
-2. Start the XPyCode Master server:
-   ```bash
-   python -m xpycode_master
-   ```
+2. Start XPyCode Master:
+
+   - For a one-shot test run:
+     ```bash
+     python -m xpycode_master
+     ```
+   - For recurring usage:
+     ```bash
+     python -m xpycode_master --setup
+     ```
 
 3. The Excel Add-in will be automatically registered.
 
@@ -82,23 +88,6 @@ pip install xpycode_master
       rA1.format.fill.color="yellow"
    ```
 
-## Running as a Service
-
-XPyCode can run as a system service for automatic startup:
-
-```bash
-# Install and start as a service
-python -m xpycode_master service install
-
-# Check status
-python -m xpycode_master service status
-
-# Stop service
-python -m xpycode_master service stop
-```
-
-Supported on Windows, Linux (systemd), and macOS (launchd). See [Service Management](https://docs.xpycode.com/user-guide/service-management/) for details.
-
 ## Upgrading
 
 Check for and install updates:
@@ -113,31 +102,6 @@ python -m xpycode_master --upgrade
 # Upgrade without confirmation
 python -m xpycode_master --upgrade --yes
 ```
-
-If XPyCode is running as a service, the upgrade process will automatically stop and restart the service.
-
-## Addin Hosting Modes
-
-XPyCode supports two modes for running the Excel add-in:
-
-### External Mode (Default)
-
-The add-in UI is served from `https://addin.xpycode.com`. This is the default mode and requires no certificate management.
-
-```bash
-python -m xpycode_master
-```
-
-### Local Mode
-
-The add-in UI is served from a local HTTPS server on your machine. Requires self-signed certificates.
-
-```bash
-python -m xpycode_master --use-local-addin
-```
-
-!!! warning "Mode Switch Cache Clearing"
-    When switching between local and external modes, XPyCode will automatically clear the Office add-in cache. This affects all Office add-ins, not just XPyCode. You may need to restart Excel after switching modes.
 
 ## Usage
 
